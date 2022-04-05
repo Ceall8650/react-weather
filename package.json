@@ -2,7 +2,7 @@
   "name": "react-weather",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Ceall8650.githib.io/react-weather",
+  "homepage": "https://Ceall8650.github.io/react-weather",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
