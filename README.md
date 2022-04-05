@@ -2,12 +2,39 @@
 
 Practice writing a weather card with React.js and tailwind CSS
 
-## Data source
+## :warning: Attention!!!
+Before running project, you should need to apply a `authentication token` from `https://opendata.cwb.gov.tw/` to fetch weather data
+ 
+## Features
+
+* Display current moment according the sunrise and sunset in that day
+* Display current time
+* Display current weather (wet, wind, temperature, description)
+* Change theme based on moment
+* Change weather icon according weather
+
+## Learning checklist
+- Functional components
+- React hooks
+  - [x] useState
+  - [x] useEffect
+  - [x] useCallback
+  - [x] useMemo
+- Custom hooks
+- Tailwind CSS + Module css
+- Light/Dark mode
+
+TODO list:
+- [ ] Alias of import path
+- [ ] css -> scss
+- [ ] enums
+
+## Data resource
 
 ### Sunrise/Sunset timestamp
-Data source:https://opendata.cwb.gov.tw/dataset/astronomy?page=1
+Data source: https://opendata.cwb.gov.tw/dataset/astronomy?page=1
 
-Check out the file `utils/sunrise-sunset.json` to sett sunrise/sunset timestamps during 2020-2022
+Check out the file `utils/sunrise-sunset.json` to see sunrise/sunset timestamps during 2020-2022
 
 ## Available Scripts
 
