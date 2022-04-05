@@ -23,11 +23,14 @@ Before running project, you should need to apply a `authentication token` from `
 - Custom hooks
 - Tailwind CSS + Module css
 - Light/Dark mode
+- PWA supported
 
 TODO list:
 - [ ] Alias of import path
 - [ ] css -> scss
 - [ ] enums
+- [ ] Detect user's location through user's browser
+- [ ] Redux
 
 ## Data resource
 
