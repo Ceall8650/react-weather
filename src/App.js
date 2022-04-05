@@ -1,31 +1,35 @@
-import { ReactComponent as AirFlowIcon } from "./images/airFlow.svg";
-import { ReactComponent as DayCloudIcon } from "./images/day-cloudy.svg";
-import { ReactComponent as RainIcon } from "./images/rain.svg";
-import { ReactComponent as RefreshIcon } from "./images/refresh.svg";
+import { useState, useMemo } from "react";
+import AVAILABLE_LOCATIONS from './utils/availableLocations';
+import { findLocation } from './utils/helpers';
+import WeatherCard from "./views/WeatherCard";
+import WeatherSetting from "./views/WeatherSetting";
 
 function App() {
+	const storageCity = localStorage.getItem('cityName');
+	const defaultCity = storageCity || AVAILABLE_LOCATIONS[6].cityName // 臺北市
+	const [currentPage, setCurrentPage] = useState("WeatherCard");
+	const [currentCity, setCurrentCity] = useState(defaultCity)
+	const currentLocation = useMemo(() => findLocation(currentCity), [currentCity])
+	
+	const handleCurrentPageChange = (page) => {
+		setCurrentPage(page)
+	}
+
+	const handleCurrentCityChange = cityName => {
+		setCurrentCity(cityName);
+	}
+
 	return (
-		<div className="flex justify-center items-center h-full bg-container">
-			<div className="relative min-w-card bg-card shadow-card box-border py-8 px-4">
-				<h1 className="text-[28px] text-title mb-5">Taipei</h1>
-				<div className="text-default text-lg mb-8">多雲時晴</div>
-				<div className="flex justify-between items-center mb-8">
-					<div className="flex text-8xl text-temperature font-light">
-						23 <span className="font-normal text-5xl">°C</span>
-					</div>
-					<DayCloudIcon />
-				</div>
-				<div className="flex items-center text-base font-light text-default mb-5">
-					<AirFlowIcon className="w-6 h-auto mr-7" /> 23 m/h
-				</div>
-				<div className="flex items-center text-base font-light text-default">
-					<RainIcon className="w-6 h-auto mr-7" /> 48%
-				</div>
-				<div className="absolute right-4 bottom-4 text-xs inline-flex items-end text-default">
-					最後觀測時間：上午 12:03{" "}
-					<RefreshIcon className="ml-3 w-4 h-4 cursor-pointer" />
-				</div>
-			</div>
+		<div className="flex justify-center items-center h-full bg-container dark:bg-dark-container">
+			{
+				currentPage === 'WeatherCard' 
+				? <WeatherCard handleCurrentPageChange={handleCurrentPageChange} currentLocation={currentLocation} />
+				: <WeatherSetting
+					cityName={currentLocation.cityName}
+					handleCurrentPageChange={handleCurrentPageChange} 
+					handleCurrentCityChange={handleCurrentCityChange} 
+				/>
+			}
 		</div>
 	);
 }

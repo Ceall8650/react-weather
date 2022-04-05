@@ -1,0 +1,47 @@
+.select {
+  @apply block;
+  @apply box-border;
+  @apply bg-transparent;
+  @apply border border-solid border-default dark:border-dark-default;
+  @apply outline-none;
+  @apply w-full;
+  @apply max-w-full;
+  @apply text-default dark:text-dark-default;
+  @apply text-base;
+  @apply py-2 px-3;
+  @apply mb-10;
+  @apply appearance-none;
+  @apply shadow-none;
+  @apply cursor-pointer;
+}
+
+.button {
+  @apply flex;
+  @apply items-center;
+  @apply justify-center;
+  @apply whitespace-nowrap;
+  @apply select-none;
+  @apply m-0;
+  @apply tracking-wider;
+  @apply leading-none;
+  @apply cursor-pointer;
+  @apply overflow-visible;
+  @apply normal-case;
+  @apply border border-solid border-transparent;
+  @apply bg-transparent;
+  @apply h-9;
+  @apply w-20;
+  @apply rounded;
+  @apply text-sm;
+  @apply focus:outline-0 focus:shadow-none;
+}
+
+.back {
+  @apply text-default dark:text-dark-default;
+  @apply border-default dark:border-dark-default;
+}
+
+.save {
+  @apply text-white;
+  @apply bg-button-submit;
+}
