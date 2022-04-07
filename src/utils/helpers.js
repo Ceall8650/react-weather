@@ -13,7 +13,7 @@ export function getMoment(locationName, observationTime) {
 
   if(formattedObservationTime.isAfter(formattedTodaySunrise)
     && formattedObservationTime.isBefore(formattedTodaySunset)) {
-      return 'light'
+      return 'day'
   }
 
   return 'night'
