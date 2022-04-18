@@ -10,7 +10,7 @@ import { ReactComponent as CogIcon } from "../images/cog.svg";
 import WeatherIcon from "../components/WeatherIcon";
 
 // Use the token applied from https://opendata.cwb.gov.tw/index
-const AUTH_TOKEN = "AUTH_TOKEN";
+const AUTH_TOKEN = "CWB-9405519C-68A9-4E09-9D6B-69D0C195AAC3";
 
 function handleThemeMode(mode) {
 	const rootElement = document.querySelector("html");
