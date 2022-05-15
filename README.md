@@ -2,6 +2,8 @@
 
 Practice writing a weather card with React.js and tailwind CSS
 
+The weather APP example refers to the reference book: [從 Hooks 開始，讓你的網頁 React 起來](https://ithelp.ithome.com.tw/articles/10222662)
+
 ## :warning: Attention!!!
 Before running project, you should need to apply a `authentication token` from `https://opendata.cwb.gov.tw/` to fetch weather data
  
