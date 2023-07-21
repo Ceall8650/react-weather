@@ -1,7 +1,8 @@
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import dayjs from "dayjs";
 import { getMoment } from "../utils/helpers";
 import useWeatherApi from '../hooks/useWeatherApi';
+import useSunTimeApi from '../hooks/useSunTimeApi';
 import { ReactComponent as AirFlowIcon } from "../images/airFlow.svg";
 import { ReactComponent as RainIcon } from "../images/rain.svg";
 import { ReactComponent as RefreshIcon } from "../images/refresh.svg";
@@ -34,6 +35,7 @@ const WeatherCard = ({ handleCurrentPageChange, currentLocation }) => {
     observationLocation: locationName,
     forecastLocation: cityName,
   })
+	const [sunTime, fetchSunTime] = useSunTimeApi(AUTH_TOKEN)
 	const {
 		description,
 		windSpeed,
@@ -46,13 +48,21 @@ const WeatherCard = ({ handleCurrentPageChange, currentLocation }) => {
 	} = weatherElement;
 
 	const moment = useMemo(
-		() => getMoment(sunriseCityName, observationTime),
-		[observationTime, sunriseCityName]
+		() => getMoment(sunTime, sunriseCityName, observationTime),
+		[sunTime, observationTime, sunriseCityName]
 	);
 
+	const init = useCallback(async () => {
+		await Promise.all([
+			fetchData(),
+			fetchSunTime(),
+		])
+	}, [fetchData, fetchSunTime])
+
   useEffect(() => {
-		fetchData();
-	}, [fetchData]);
+		init()
+	}, [init]);
+
 	useEffect(() => {
 		handleThemeMode(moment);
 	}, [moment]);

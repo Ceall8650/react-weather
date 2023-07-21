@@ -39,8 +39,6 @@ TODO list:
 ### Sunrise/Sunset timestamp
 Data source: https://opendata.cwb.gov.tw/dataset/astronomy?page=1
 
-Check out the file `utils/sunrise-sunset.json` to see sunrise/sunset timestamps during 2020-2022
-
 ## Available Scripts
 
 In the project directory, you can run:

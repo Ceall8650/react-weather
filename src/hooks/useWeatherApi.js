@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { useState, useCallback } from 'react';
 
 async function fetchObservationWeather(authToken, observationLocation) {
@@ -47,13 +48,14 @@ function getForecastWeather(locationInfo) {
 }
 
 const useWeatherApi = ({ authToken, observationLocation, forecastLocation }) => {
+	const defaultObservationTime = dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss")
   const [weatherElement, setWeatherElement] = useState({
 		locationName: "臺北市",
 		description: "多雲時晴",
 		windSpeed: null,
 		temperature: null,
 		rainPossibility: null,
-		observationTime: "2020-12-12 22:10:00",
+		observationTime: defaultObservationTime,
 		weatherCode: null,
 		comfortability: "",
     isLoading: true,
@@ -65,19 +67,21 @@ const useWeatherApi = ({ authToken, observationLocation, forecastLocation }) => 
         ...previousWeather,
         isLoading: true,
       }))
-
-			 const [observationLocationInfo, forecastLocationInfo] = await Promise.all([
+			 const [
+				observationLocationInfo, 
+				forecastLocationInfo,
+			] = await Promise.all([
         fetchObservationWeather(authToken, observationLocation),
         fetchForecastWeather(authToken, forecastLocation),
       ]);
-			const observationWeather = getObservationWeatherData(observationLocationInfo);
+			const observationWeather = observationLocationInfo && getObservationWeatherData(observationLocationInfo);
 			const forecastWeather = getForecastWeather(forecastLocationInfo);
 
 			setWeatherElement((previousWeather) => ({
 				...previousWeather,
-				temperature: observationWeather.TEMP,
-				windSpeed: observationWeather.WDSD,
-				observationTime: observationLocationInfo.time.obsTime,
+				temperature: observationWeather?.TEMP || '--',
+				windSpeed: observationWeather?.WDSD || '--',
+				observationTime: observationLocationInfo?.time?.obsTime || defaultObservationTime ,
 				rainPossibility: forecastWeather["PoP"].parameterName,
 				weatherCode: forecastWeather["Wx"].parameterValue,
 				description: forecastWeather["Wx"].parameterName,
@@ -92,7 +96,7 @@ const useWeatherApi = ({ authToken, observationLocation, forecastLocation }) => 
       }))
 
 		}
-	}, [authToken, observationLocation, forecastLocation]);
+	}, [authToken, observationLocation, forecastLocation, defaultObservationTime]);
 
   return [weatherElement, fetchData]
 }
