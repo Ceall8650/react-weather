@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-weather/static/css/main.e160512e.css",
-    "main.js": "/react-weather/static/js/main.c3c72b79.js",
+    "main.js": "/react-weather/static/js/main.c9e0a80c.js",
     "service-worker.js": "/react-weather/service-worker.js",
     "static/media/day-snowing.svg": "/react-weather/static/media/day-snowing.ba1cbc7669611ee425e874e171d02e70.svg",
     "static/media/night-snowing.svg": "/react-weather/static/media/night-snowing.f00de84c0d9bed3a871ecc6fdd79f1ca.svg",
@@ -24,10 +24,10 @@
     "static/media/loading.svg": "/react-weather/static/media/loading.f8d56fd58925a1aaab4f80f1d8865c03.svg",
     "static/media/night-clear.svg": "/react-weather/static/media/night-clear.94eb7d671bc6d4dec6aa0b47038954df.svg",
     "main.e160512e.css.map": "/react-weather/static/css/main.e160512e.css.map",
-    "main.c3c72b79.js.map": "/react-weather/static/js/main.c3c72b79.js.map"
+    "main.c9e0a80c.js.map": "/react-weather/static/js/main.c9e0a80c.js.map"
   },
   "entrypoints": [
     "static/css/main.e160512e.css",
-    "static/js/main.c3c72b79.js"
+    "static/js/main.c9e0a80c.js"
   ]
 }
